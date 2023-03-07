@@ -1,28 +1,36 @@
-# App
+# Reportify
 
-This repo contains a fresh install of the latest available version of Ruby on
-Rails. The purpose of this repo is to have a bare bones complete setup that
-people can use to start their new projects.
+This is a sample application that will take a payload and report to slack for
+any spam messages.
 
-Here are a few notables in this repo:
+## Configuration
 
-* Ruby 3.2.1
-* Ruby on Rails v7.0.4
-* Alpine 3.17
-* PG configured
-* Redis configured
-* Hotwire
-* Importmaps
-* Bulma CSS
-
-## Installation Notes
-
-The Rails application was setup with the following command:
-
+1. Environment variables:
 ```
-rails new . -d postgresql -j importmap
+SLACK_OAUTH_TOKEN
+SLACK_CHANNEL
 ```
 
-## Usage
+## Development environment
 
-For more information, have a look at my blog post: [https://roelbondoc.com/2021/12/04/my-app-github-repo/](https://roelbondoc.com/2021/12/04/my-app-github-repo/)
+[Docker](https://www.docker.com) is recommended for local development.
+
+1. Clone repo
+```
+git clone git@github.com:rubyupdotdev/reportify.git
+```
+
+2. Build local image
+```
+docker-compose build
+```
+
+3. Setup database
+```
+docker-compose run --rm app bin/rails db:create
+```
+
+4. Run test suite
+```
+docker-compose run --rm app bin/rails test
+```
