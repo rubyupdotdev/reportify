@@ -2,6 +2,8 @@ FROM ruby:3.2.1-alpine3.17
 
 RUN apk --update add build-base ruby-dev postgresql-dev tzdata git
 
+RUN gem install mrsk
+
 RUN mkdir /app
 WORKDIR /app
 
